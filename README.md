@@ -3,7 +3,7 @@ Data Processing for KIT Hydrological Monitoring Network Buehl
 
 The Python Scripts in this repository aim to merge the data collected from several types of loggers.
 Data collection usually takes place once a month and is conducted by a HiWi (research assistance).
-The following types of loggers are installed:
+The types of loggers and the individual loggers are listed here: 
 
 ## Rain gauges using OnSet HoBO event logger
 
