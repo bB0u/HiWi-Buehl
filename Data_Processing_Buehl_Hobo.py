@@ -21,8 +21,8 @@ import matplotlib.pyplot as plt
 from re import search
 
 # %% Set path
-current_folder = "09-21-19"
-mypath = "D:/Dokumente/Studium/KIT2/HIWI/Data_Buehl/Daten-2019/" + current_folder
+current_folder = "07_09_21"
+mypath = "D:/Dokumente/Studium/KIT2/HIWI/Data_Buehl/Daten-2021/" + current_folder
 targetpath = "D:/Dokumente/Studium/KIT2/HIWI/Data_Final/HoBo_Rain_Gauges"
 
 filenames = ["Sternenberg", "Winterberg", "Sportplatz", "Schönbrunn", "Schwabenquelle", 
@@ -49,11 +49,14 @@ for current_file in filenames: # loop through files in folder
         #Then merge the two dfs   
         date1 = pd.to_datetime(df[time_col], format="%m/%d/%y %I:%M:%S %p", errors='coerce')
         date2 = pd.to_datetime(df[time_col], format="%m/%d/%Y %H:%M", errors='coerce')
-        df[time_col] = date1.combine_first(date2)
+        date3 = pd.to_datetime(df[time_col], format="%d/%m/%y %H:%M:%S", errors='coerce')
+        date12 = date1.combine_first(date2)
+        df[time_col] = date12.combine_first(date3)
         df.set_index(time_col, inplace = True)
         df.index.names = ["DateTimeUTC"]
         
         for parameter,i in zip(measured, range(len(measured))): # loop through parameters in file 
+        
             dat_col = [col for col in df.columns if headers[i] in col]
             df2 = df[dat_col]
             df2.columns = ["DataValue"]
@@ -100,11 +103,13 @@ for current_file in filenames: # loop through files in folder
             dup = data_new.index.duplicated().sum() 
             if dup > 0:
                 print(">",dup, " duplicates in index of " + current_file + parameter )
-                data_new = data_new[~data_new.index.duplicated(keep = "last")] # remove rows with duplicates in index
+                data_new = data_new[~data_new.index.duplicated(keep = 'last')] # remove rows with duplicates in index
                 #first -> keep first occurence, last -> keep last occurence, False -> keep none
-                
-            data_new.sort_index(inplace = True)
-                
+            
+            data_new = data_new.dropna(subset = ["DataValue"])  # drop row if NaN in DataValue column
+            data_new.sort_index(inplace = True)                 # sort after datetimeindex
+             
+            
             # PLOT merged data
             plt.plot(data_new.index, data_new.DataValue, ".",  c = col, ms = 0.5)
             plt.title(current_file + measured[i] + " ALL")
@@ -118,3 +123,4 @@ for current_file in filenames: # loop through files in folder
             
     except:
         print(">>> Exception: Probably no "+ current_file + " file in the folder or some issues with header <<<")
+        
