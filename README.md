@@ -12,7 +12,7 @@ The types of loggers and the individual loggers are listed here:
 ## Rain gauges using OnSet HoBO event logger
 - log precipitation in 0.2 mm increments with a 5 min temporal resolution
 - temperature as well
-- non heated &rightarrow snow is not measured &rightarrow data from winter can be discarded
+- non heated &#8594; snow is not measured &#8594; data from winter can be discarded
 - prone to clogging 
 
 ## Soil Moisture using Campbell Scientific logger
