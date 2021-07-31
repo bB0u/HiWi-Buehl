@@ -1,7 +1,7 @@
 # HiWi-Buehl
 Data Processing for the Hydrological Monitoring Network in the Bühlert catchment operated by KIT
 A google map with the postions of the measuring devices can be found [here](https://www.google.com/maps/d/edit?mid=1ZYPXmtpy7SuYAP1PAG6mhgypOxP9pXSi&usp=sharing).
-The data is supposed to be incorporated in the V-FOR-Water(https://www.vforwater.de/index.php) platform.
+The data is supposed to be incorporated in the [V-FOR-Water](https://www.vforwater.de/index.php) platform.
 
 The Python Scripts in this repository aim to merge the data collected from several types of loggers.
 Data collection usually takes place once a month and is conducted by a HiWi (research assistance).
