@@ -68,8 +68,14 @@
 
 - Fill out protocoll and download data at every site
 
+- Replace batteries where necessary
+
+- Clean clogged rain gauges
+
 - Do not forget to launch the loggers again after download if necessary
 
 - End of the day: Drive to uni, bring back stuff, depending on Stadtmobil station type you can already leave the Stadtmobil card when there is a key box, if you had to unlock the Stadtmobil with the card at the front window, you have to keep the card and bring it back to the secretary later 
+
+- Downlaod data from Toughbook, maybe process it already (talk to Mirko)s
 
   
